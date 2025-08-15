@@ -85,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // --- 2. DOM ELEMENT REFERENCES ---
   const videoPlayer = document.getElementById("main-video");
-  const videoTitleDisplay = document.getElementById("video-title-display");
   
   // Add event listener to hide splash screen on first video play
   videoPlayer.addEventListener('play', onFirstVideoPlay, { once: true });
@@ -158,12 +157,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // --- 4. CORE FUNCTIONS ---
-  function showVideoTitle(title) {
-    videoTitleDisplay.textContent = cleanTitle(title);
-    videoTitleDisplay.classList.remove("fade-in-out");
-    void videoTitleDisplay.offsetWidth;
-    videoTitleDisplay.classList.add("fade-in-out");
-  }
 
   function renderPlaylist(groupKey, drillKey) {
     const drillData = exerciseData[groupKey][drillKey];
@@ -214,7 +207,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!drillData || index < 0 || index >= drillData.items.length) return;
 
     const itemData = drillData.items[index];
-    showVideoTitle(itemData.title);
 
     let videoSourceUrl =
       drillData.type === "playlist" ? itemData.url : drillData.videoUrl;
@@ -308,7 +300,6 @@ document.addEventListener("DOMContentLoaded", function () {
       : -1;
     if (activeChapterIndex !== -1 && activeChapterIndex !== currentItemIndex) {
       currentItemIndex = activeChapterIndex;
-      showVideoTitle(drillData.items[activeChapterIndex].title);
       updateActiveItemInPlaylist(activeChapterIndex);
     }
   });
@@ -466,7 +457,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const firstOption = categorySelector.options[0];
         loadDrill(firstOption.parentElement.label, firstOption.value);
       } else {
-        videoTitleDisplay.textContent = "No exercises found.";
         playlistTitle.textContent = "Playlist Empty";
       }
 
@@ -475,7 +465,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     } catch (error) {
       console.error("Could not load exercise data:", error);
-      videoTitleDisplay.textContent = "Error loading data.";
       playlistTitle.textContent = "Error";
     }
   }
