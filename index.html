@@ -1,9 +1,17 @@
 <!-- index.html -->
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Exercise Video Player</title>
+
+  <!-- PWA META TAGS -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png" />
 
   <!-- FONT IMPORT -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,6 +21,7 @@
   <!-- STYLESHEET -->
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <main class="page-container">
     <section class="video-section">
@@ -42,5 +51,19 @@
 
   <!-- SCRIPT -->
   <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('Service Worker registered successfully:', registration);
+          })
+          .catch(error => {
+            console.log('Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
 </body>
+
 </html>
