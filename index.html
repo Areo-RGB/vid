@@ -42,6 +42,16 @@
     </section>
 
     <section class="playlist-card">
+      <div id="offline-controls" class="offline-controls" hidden>
+        <p id="offline-message">Download all videos for offline playback.</p>
+        <button id="download-videos-btn">Download All</button>
+        <div id="download-progress" class="download-progress" hidden>
+          <div class="progress-bar-container">
+            <div id="progress-bar"></div>
+          </div>
+          <span id="progress-text">Downloading... (0/0)</span>
+        </div>
+      </div>
       <header class="playlist-header">
         <h2 class="playlist-title"></h2>
         <div class="category-selector-container">
