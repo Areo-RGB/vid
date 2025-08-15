@@ -3,3 +3,7 @@
 # Example .gitignore files: https://github.com/github/gitignore
 /bower_components/
 /node_modules/
+add-icon-safezone.bat
+.gitignore
+verify-icons.ps1
+add-icon-safezone.ps1
