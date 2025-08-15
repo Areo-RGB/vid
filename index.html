@@ -1,0 +1,46 @@
+<!-- index.html -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise Video Player</title>
+
+  <!-- FONT IMPORT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- STYLESHEET -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page-container">
+    <section class="video-section">
+      <div class="video-player-wrapper">
+        <!-- Removed autoplay and loop attributes -->
+        <video id="main-video" playsinline muted controls></video>
+        <h1 id="video-title-display"></h1>
+      </div>
+      <div class="video-details">
+      </div>
+    </section>
+
+    <section class="playlist-card">
+      <header class="playlist-header">
+        <h2 class="playlist-title"></h2>
+        <div class="category-selector-container">
+          <select id="category-selector"></select>
+        </div>
+      </header>
+      <div class="playlist-scroll-area">
+        <ul id="playlist-list">
+          <!-- Playlist items will be dynamically inserted here -->
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- SCRIPT -->
+  <script src="script.js"></script>
+</body>
+</html>
