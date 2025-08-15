@@ -531,6 +531,32 @@
           "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Skills_Moves/5_Easy_Chop_Skills_To_Beat_Defenders_-_Learn_These_Simple_Dribbling_Moves/clips/05_Elastico_Chop.mp4"
         }
       ]
+    },
+    "5 Basic Turns": {
+      "type": "playlist",
+      "playlistTitle": "5 Basic Turns",
+      "items": [
+        {
+          "title": "01_Inside_Foot_Turn.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Skills_Moves/5_Turns_Every_Player_Should_Master_-_Glide_Past_Defenders_With_These_5_Moves/clips/01_Inside_Foot_Turn.mp4"
+        },
+        {
+          "title": "02_Outside_Foot_Turn.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Skills_Moves/5_Turns_Every_Player_Should_Master_-_Glide_Past_Defenders_With_These_5_Moves/clips/02_Outside_Foot_Turn.mp4"
+        },
+        {
+          "title": "03_Inside_Foot_Turn_Behind_Foot.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Skills_Moves/5_Turns_Every_Player_Should_Master_-_Glide_Past_Defenders_With_These_5_Moves/clips/03_Inside_Foot_Turn_Behind_Foot.mp4"
+        },
+        {
+          "title": "04_Pull_Snap.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Skills_Moves/5_Turns_Every_Player_Should_Master_-_Glide_Past_Defenders_With_These_5_Moves/clips/04_Pull_Snap.mp4"
+        },
+        {
+          "title": "05_Inside_Turn_with_Fake.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Skills_Moves/5_Turns_Every_Player_Should_Master_-_Glide_Past_Defenders_With_These_5_Moves/clips/05_Inside_Turn_with_Fake.mp4"
+        }
+      ]
     }
   },
   "Flexibility & Recovery": {
