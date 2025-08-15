@@ -251,12 +251,12 @@ document.addEventListener("DOMContentLoaded", function () {
       exerciseData = await response.json();
 
       // Populate category selector with optgroups
-      const groupKeys = Object.keys(exerciseData).sort();
+      const groupKeys = Object.keys(exerciseData);
       groupKeys.forEach((groupKey) => {
         const optgroup = document.createElement("optgroup");
         optgroup.label = groupKey;
 
-        const drillKeys = Object.keys(exerciseData[groupKey]).sort();
+        const drillKeys = Object.keys(exerciseData[groupKey]);
         drillKeys.forEach((drillKey) => {
           const option = document.createElement("option");
           option.value = drillKey;
