@@ -1,4 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // --- 0. SPLASH SCREEN MANAGEMENT ---
+  const splashScreen = document.getElementById('splash-screen');
+  let splashHidden = false;
+
+  function hideSplashScreen() {
+    if (!splashHidden && splashScreen) {
+      splashHidden = true;
+      splashScreen.classList.add('hidden');
+      
+      // Remove splash screen completely after animation
+      setTimeout(() => {
+        if (splashScreen && splashScreen.parentNode) {
+          splashScreen.parentNode.removeChild(splashScreen);
+        }
+      }, 500); // Match CSS transition duration
+    }
+  }
+
+  // Hide splash screen when first video starts playing
+  function onFirstVideoPlay() {
+    hideSplashScreen();
+  }
+
   // --- 1. DATA SOURCES & DB ---
   let exerciseData = {}; // Data will be loaded from data.json
   const dbManager = {
@@ -63,6 +86,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- 2. DOM ELEMENT REFERENCES ---
   const videoPlayer = document.getElementById("main-video");
   const videoTitleDisplay = document.getElementById("video-title-display");
+  
+  // Add event listener to hide splash screen on first video play
+  videoPlayer.addEventListener('play', onFirstVideoPlay, { once: true });
   const playlistElement = document.getElementById("playlist-list");
   const playlistTitle = document.querySelector(".playlist-title");
   const categorySelector = document.getElementById("category-selector");
