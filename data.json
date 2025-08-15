@@ -1,5 +1,101 @@
 {
   "Agility & Speed": {
+    "15 Footwork Drills": {
+      "type": "chapters",
+      "playlistTitle": "15 Footwork Drills",
+      "videoUrl": "https://data-h03.fra1.cdn.digitaloceanspaces.com/15-Fast-Footwork_processed.mp4",
+      "items": [
+        { "title": "Two Foot Forwards", "startTime": 64, "endTime": 89 },
+        { "title": "Two Foot Sideways", "startTime": 94, "endTime": 118 },
+        { "title": "Icky Shuffle", "startTime": 124, "endTime": 153 },
+        { "title": "Backwards Icky Shuffle", "startTime": 159, "endTime": 191 },
+        { "title": "In & Out", "startTime": 197, "endTime": 228 },
+        { "title": "SL In & Out", "startTime": 234, "endTime": 266 },
+        { "title": "Cross Feet Behind", "startTime": 272, "endTime": 297 },
+        {
+          "title": "Backwards Cross Feet Behind",
+          "startTime": 302,
+          "endTime": 331
+        },
+        { "title": "Diagonal Run", "startTime": 337, "endTime": 375 },
+        { "title": "Carioca", "startTime": 381, "endTime": 436 },
+        { "title": "Two Foot Hops", "startTime": 442, "endTime": 479 },
+        { "title": "Two Foot Sideways Hops", "startTime": 485, "endTime": 521 },
+        { "title": "Single Leg Hops", "startTime": 527, "endTime": 561 },
+        {
+          "title": "Single Leg Sideways Hops",
+          "startTime": 567,
+          "endTime": 613
+        },
+        { "title": "Single Leg Switch Hops", "startTime": 619, "endTime": 653 }
+      ]
+    },
+    "15 Footwork Exercises": {
+      "type": "playlist",
+      "playlistTitle": "15 Footwork Exercises",
+      "items": [
+        {
+          "title": "01_In_Out_Hops",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/01_In_Out_Hops.mp4"
+        },
+        {
+          "title": "02_Hopscotch",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/02_Hopscotch.mp4"
+        },
+        {
+          "title": "03_Karaoke",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/03_Karaoke.mp4"
+        },
+        {
+          "title": "04_Staggered_In_Out",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/04_Staggered_In_Out.mp4"
+        },
+        {
+          "title": "05_One_Two_Hop",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/05_One_Two_Hop.mp4"
+        },
+        {
+          "title": "06_Single_Leg_Hop",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/06_Single_Leg_Hop.mp4"
+        },
+        {
+          "title": "07_Icky_Shuffle_Tap",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/07_Icky_Shuffle_Tap.mp4"
+        },
+        {
+          "title": "08_Two_Forwards_Back",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/08_Two_Forwards_Back.mp4"
+        },
+        {
+          "title": "09_Back_Through",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/09_Back_Through.mp4"
+        },
+        {
+          "title": "10_Crossover_Tap",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/10_Crossover_Tap.mp4"
+        },
+        {
+          "title": "11_Reverse_Crossover_Tap",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/11_Reverse_Crossover_Tap.mp4"
+        },
+        {
+          "title": "12_Reverse_Crossover_Shuffle",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/12_Reverse_Crossover_Shuffle.mp4"
+        },
+        {
+          "title": "13_Reverse_Crossover_One_Tap",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/13_Reverse_Crossover_One_Tap.mp4"
+        },
+        {
+          "title": "14_Crossover_Lateral_Shuffle",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/14_Crossover_Lateral_Shuffle.mp4"
+        },
+        {
+          "title": "15_Forwards_Out_Back",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/15_Forwards_Out_Back.mp4"
+        }
+      ]
+    },
     "10 Ladder Drills": {
       "type": "chapters",
       "playlistTitle": "10 Ladder Drills",
@@ -149,102 +245,6 @@
         }
       ]
     },
-    "15 Footwork Exercises": {
-      "type": "playlist",
-      "playlistTitle": "15 Footwork Exercises",
-      "items": [
-        {
-          "title": "01_In_Out_Hops",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/01_In_Out_Hops.mp4"
-        },
-        {
-          "title": "02_Hopscotch",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/02_Hopscotch.mp4"
-        },
-        {
-          "title": "03_Karaoke",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/03_Karaoke.mp4"
-        },
-        {
-          "title": "04_Staggered_In_Out",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/04_Staggered_In_Out.mp4"
-        },
-        {
-          "title": "05_One_Two_Hop",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/05_One_Two_Hop.mp4"
-        },
-        {
-          "title": "06_Single_Leg_Hop",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/06_Single_Leg_Hop.mp4"
-        },
-        {
-          "title": "07_Icky_Shuffle_Tap",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/07_Icky_Shuffle_Tap.mp4"
-        },
-        {
-          "title": "08_Two_Forwards_Back",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/08_Two_Forwards_Back.mp4"
-        },
-        {
-          "title": "09_Back_Through",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/09_Back_Through.mp4"
-        },
-        {
-          "title": "10_Crossover_Tap",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/10_Crossover_Tap.mp4"
-        },
-        {
-          "title": "11_Reverse_Crossover_Tap",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/11_Reverse_Crossover_Tap.mp4"
-        },
-        {
-          "title": "12_Reverse_Crossover_Shuffle",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/12_Reverse_Crossover_Shuffle.mp4"
-        },
-        {
-          "title": "13_Reverse_Crossover_One_Tap",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/13_Reverse_Crossover_One_Tap.mp4"
-        },
-        {
-          "title": "14_Crossover_Lateral_Shuffle",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/14_Crossover_Lateral_Shuffle.mp4"
-        },
-        {
-          "title": "15_Forwards_Out_Back",
-          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Agility_Speed/15_Fast_Footwork_Exercises_-_Increase_Your_Foot_Speed_Coordination_With_These_Fast_Feet_Drills/clips/15_Forwards_Out_Back.mp4"
-        }
-      ]
-    },
-    "15 Footwork Drills": {
-      "type": "chapters",
-      "playlistTitle": "15 Footwork Drills",
-      "videoUrl": "https://data-h03.fra1.cdn.digitaloceanspaces.com/15-Fast-Footwork_processed.mp4",
-      "items": [
-        { "title": "Two Foot Forwards", "startTime": 64, "endTime": 89 },
-        { "title": "Two Foot Sideways", "startTime": 94, "endTime": 118 },
-        { "title": "Icky Shuffle", "startTime": 124, "endTime": 153 },
-        { "title": "Backwards Icky Shuffle", "startTime": 159, "endTime": 191 },
-        { "title": "In & Out", "startTime": 197, "endTime": 228 },
-        { "title": "SL In & Out", "startTime": 234, "endTime": 266 },
-        { "title": "Cross Feet Behind", "startTime": 272, "endTime": 297 },
-        {
-          "title": "Backwards Cross Feet Behind",
-          "startTime": 302,
-          "endTime": 331
-        },
-        { "title": "Diagonal Run", "startTime": 337, "endTime": 375 },
-        { "title": "Carioca", "startTime": 381, "endTime": 436 },
-        { "title": "Two Foot Hops", "startTime": 442, "endTime": 479 },
-        { "title": "Two Foot Sideways Hops", "startTime": 485, "endTime": 521 },
-        { "title": "Single Leg Hops", "startTime": 527, "endTime": 561 },
-        {
-          "title": "Single Leg Sideways Hops",
-          "startTime": 567,
-          "endTime": 613
-        },
-        { "title": "Single Leg Switch Hops", "startTime": 619, "endTime": 653 }
-      ]
-    },
     "20 Football Feet": {
       "type": "chapters",
       "playlistTitle": "20 Football Feet",
@@ -303,46 +303,6 @@
           "endTime": 580
         }
       ]
-    },
-    "3 Acceleration Drills": {
-      "type": "chapters",
-      "playlistTitle": "3 Acceleration Drills",
-      "videoUrl": "https://data-h03.fra1.digitaloceanspaces.com/trainings-video/Agility%20%26%20Speed/3%20Drills%20To%20Improve%20Speed%20and%20Acceleration%20-%20Increase%20Your%20Speed/3%20Drills%20To%20Improve%20Speed%20and%20Acceleration%20_%20Increase%20Your%20Speed_web_web_web.mp4",
-      "items": [
-        { "title": "Wall Drill", "startTime": 19, "endTime": 59 },
-        { "title": "Resisted Sprints", "startTime": 60, "endTime": 97 },
-        { "title": "Falling Sprints", "startTime": 98, "endTime": 125 }
-      ]
-    },
-    "3 Speed Drills": {
-      "type": "chapters",
-      "playlistTitle": "3 Speed Drills",
-      "videoUrl": "https://data-h03.fra1.digitaloceanspaces.com/trainings-video/Agility%20%26%20Speed/3%20Speed%20and%20Agility%20Drills%20-%20Increase%20Your%20Speed%20and%20Agility%20With%20These%20Drills/3%20Speed%20and%20Agility%20Drills%20_%20Increase%20Your%20Speed%20and%20Agility%20With%20These%20Drills_web_web.mp4",
-      "items": [
-        {
-          "title": "Lateral Shuffle to Sprint",
-          "startTime": 12,
-          "endTime": 46
-        },
-        { "title": "Backpedal to Sprint", "startTime": 47, "endTime": 77 },
-        { "title": "T Drill", "startTime": 78, "endTime": 105 }
-      ]
-    },
-    "5 Agility Drills": {
-      "type": "chapters",
-      "playlistTitle": "5 Agility Drills",
-      "videoUrl": "https://data-h03.fra1.digitaloceanspaces.com/trainings-video/Agility%20%26%20Speed/5%20Essential%20Speed%20and%20Agility%20Drills%20-%20Increase%20Your%20Speed%20and%20Change%20of%20Direction/5%20Essential%20Speed%20and%20Agility%20Drills%20_%20Increase%20Your%20Speed%20and%20Change%20of%20Direction_web.mp4",
-      "items": [
-        {
-          "title": "Forward Run with Lateral Shuffle",
-          "startTime": 19,
-          "endTime": 58
-        },
-        { "title": "Box Drill", "startTime": 59, "endTime": 90 },
-        { "title": "Pro Agility Drill", "startTime": 91, "endTime": 117 },
-        { "title": "T Drill", "startTime": 118, "endTime": 145 },
-        { "title": "W Drill", "startTime": 146, "endTime": 170 }
-      ]
     }
   },
   "Ball Control & Dribbling": {
@@ -361,8 +321,44 @@
       "playlistTitle": "10 Total Control",
       "items": [
         {
-          "title": "10 Exercises For Total Ball Control",
-          "url": "https://data-h03.fra1.digitaloceanspaces.com/trainings-video/Ball%20Control/10%20Exercises%20For%20Total%20Ball%20Control%20-%20Drills%20To%20Improve%20Ball%20Mastery%2C%20Passing%20%26%20First%20Touch/10%20Exercises%20For%20Total%20Ball%20Control%20_%20Drills%20To%20Improve%20Ball%20Mastery_%20Passing%20_%20First%20Touch_web.mp4"
+          "title": "01_Sole_Roll.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Ball_Control/10_Exercises_For_Total_Ball_Control_-_Drills_To_Improve_Ball_Mastery_Passing_First_Touch/clips/01_Sole_Roll.mp4"
+        },
+        {
+          "title": "02_L_Drag.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Ball_Control/10_Exercises_For_Total_Ball_Control_-_Drills_To_Improve_Ball_Mastery_Passing_First_Touch/clips/02_L_Drag.mp4"
+        },
+        {
+          "title": "03_Cruyff.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Ball_Control/10_Exercises_For_Total_Ball_Control_-_Drills_To_Improve_Ball_Mastery_Passing_First_Touch/clips/03_Cruyff.mp4"
+        },
+        {
+          "title": "04_Outside_Step_Over.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Ball_Control/10_Exercises_For_Total_Ball_Control_-_Drills_To_Improve_Ball_Mastery_Passing_First_Touch/clips/04_Outside_Step_Over.mp4"
+        },
+        {
+          "title": "05_Inside_Stepover.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Ball_Control/10_Exercises_For_Total_Ball_Control_-_Drills_To_Improve_Ball_Mastery_Passing_First_Touch/clips/05_Inside_Stepover.mp4"
+        },
+        {
+          "title": "06_Samba.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Ball_Control/10_Exercises_For_Total_Ball_Control_-_Drills_To_Improve_Ball_Mastery_Passing_First_Touch/clips/06_Samba.mp4"
+        },
+        {
+          "title": "07_Rabona_Fake.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Ball_Control/10_Exercises_For_Total_Ball_Control_-_Drills_To_Improve_Ball_Mastery_Passing_First_Touch/clips/07_Rabona_Fake.mp4"
+        },
+        {
+          "title": "08_V_Cuts.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Ball_Control/10_Exercises_For_Total_Ball_Control_-_Drills_To_Improve_Ball_Mastery_Passing_First_Touch/clips/08_V_Cuts.mp4"
+        },
+        {
+          "title": "09_Alternate_V_Cuts.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Ball_Control/10_Exercises_For_Total_Ball_Control_-_Drills_To_Improve_Ball_Mastery_Passing_First_Touch/clips/09_Alternate_V_Cuts.mp4"
+        },
+        {
+          "title": "10_Inside_Outside.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/Ball_Control/10_Exercises_For_Total_Ball_Control_-_Drills_To_Improve_Ball_Mastery_Passing_First_Touch/clips/10_Inside_Outside.mp4"
         }
       ]
     },
@@ -511,6 +507,32 @@
           "title": "Kombinationspass mit Haken und Außenseiten-Touch",
           "startTime": 318,
           "endTime": 395
+        }
+      ]
+    },
+    "Prellwand-1": {
+      "type": "playlist",
+      "playlistTitle": "Prellwand-1",
+      "items": [
+        {
+          "title": "01_Inside_Outside.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/First_Touch/5_Individual_First_Touch_Drills_-_Improve_Your_First_Touch_With_These_Exercises/clips/01_Inside_Outside.mp4"
+        },
+        {
+          "title": "02_Backfoot.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/First_Touch/5_Individual_First_Touch_Drills_-_Improve_Your_First_Touch_With_These_Exercises/clips/02_Backfoot.mp4"
+        },
+        {
+          "title": "03_First-time_Passes.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/First_Touch/5_Individual_First_Touch_Drills_-_Improve_Your_First_Touch_With_These_Exercises/clips/03_First-time_Passes.mp4"
+        },
+        {
+          "title": "04_Inside_Outside_Pattern.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/First_Touch/5_Individual_First_Touch_Drills_-_Improve_Your_First_Touch_With_These_Exercises/clips/04_Inside_Outside_Pattern.mp4"
+        },
+        {
+          "title": "05_First-time_Pass_Pattern.mp4",
+          "url": "https://data-h03.fra1.cdn.digitaloceanspaces.com/trainings-video/First_Touch/5_Individual_First_Touch_Drills_-_Improve_Your_First_Touch_With_These_Exercises/clips/05_First-time_Pass_Pattern.mp4"
         }
       ]
     }

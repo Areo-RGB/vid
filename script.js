@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const playlistElement = document.getElementById("playlist-list");
   const playlistTitle = document.querySelector(".playlist-title");
   const categorySelector = document.getElementById("category-selector");
+  const fullscreenBtn = document.getElementById("fullscreen-btn");
+  const videoWrapper = document.querySelector(".video-player-wrapper");
 
   let currentItemIndex = -1;
   let currentGroupKey = "";
@@ -211,6 +213,31 @@ document.addEventListener("DOMContentLoaded", function () {
       const drillKey = selectedOption.value;
       const groupKey = selectedOption.parentElement.label;
       loadDrill(groupKey, drillKey);
+    }
+  });
+
+  fullscreenBtn.addEventListener("click", () => {
+    if (!document.fullscreenElement) {
+      videoWrapper.requestFullscreen().catch((err) => {
+        console.error(
+          `Error attempting to enable full-screen mode: ${err.message} (${err.name})`
+        );
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener("fullscreenchange", () => {
+    if (document.fullscreenElement) {
+      // Entered fullscreen, try to lock to landscape
+      screen.orientation.lock("landscape").catch((err) => {
+        // This might fail on desktop or if not permitted, which is fine.
+        console.warn("Screen orientation lock failed:", err.message);
+      });
+    } else {
+      // Exited fullscreen, unlock orientation
+      screen.orientation.unlock();
     }
   });
 
