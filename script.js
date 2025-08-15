@@ -85,14 +85,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // --- 2. DOM ELEMENT REFERENCES ---
   const videoPlayer = document.getElementById("main-video");
+  const player = new Plyr(videoPlayer, {
+    // Plyr options, if needed
+    // For example, to hide the default fullscreen button if you have a custom one
+    // controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay' /*'fullscreen'*/],
+  });
   
   // Add event listener to hide splash screen on first video play
-  videoPlayer.addEventListener('play', onFirstVideoPlay, { once: true });
+  player.on('play', onFirstVideoPlay, { once: true });
   const playlistElement = document.getElementById("playlist-list");
   const playlistTitle = document.querySelector(".playlist-title");
   const categorySelector = document.getElementById("category-selector");
-  const fullscreenBtn = document.getElementById("fullscreen-btn");
-  const videoWrapper = document.querySelector(".video-player-wrapper");
+  // const fullscreenBtn = document.getElementById("fullscreen-btn");
+  // const videoWrapper = document.querySelector(".video-player-wrapper");
   // Offline UI Elements
   const offlineControls = document.getElementById("offline-controls");
   const offlineMessage = document.getElementById("offline-message");
@@ -223,19 +228,24 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(`Loading video from network: ${videoSourceUrl}`);
     }
 
-    const isSameVideo = videoPlayer.currentSrc === finalVideoSrc;
+    const isSameVideo = player.source === finalVideoSrc;
     if (!isSameVideo) {
-      videoPlayer.src = finalVideoSrc;
+      player.source = {
+        type: 'video',
+        sources: [{
+          src: finalVideoSrc,
+        }],
+      };
     }
 
     if (drillData.type === "chapters") {
-      videoPlayer.currentTime = itemData.startTime;
+      player.currentTime = itemData.startTime;
     } else if (isSameVideo) {
-      videoPlayer.currentTime = 0;
+      player.currentTime = 0;
     }
 
     if (shouldPlay) {
-      videoPlayer
+      player
         .play()
         .catch((error) => console.warn("Autoplay was prevented:", error));
     }
@@ -266,18 +276,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  videoPlayer.addEventListener("loadedmetadata", function () {
+  player.on("loadedmetadata", function () {
     const drillData = exerciseData[currentGroupKey]?.[currentDrillKey];
     if (drillData?.type === "playlist" && currentItemIndex !== -1) {
       const durationElement =
         playlistElement.querySelectorAll(".item-duration")[currentItemIndex];
       if (durationElement && durationElement.textContent === "--:--") {
-        durationElement.textContent = formatDuration(videoPlayer.duration);
+        durationElement.textContent = formatDuration(player.duration);
       }
     }
   });
 
-  videoPlayer.addEventListener("ended", function () {
+  player.on("ended", function () {
     const drillData = exerciseData[currentGroupKey][currentDrillKey];
     if (drillData.type === "playlist") {
       const nextIndex =
@@ -288,10 +298,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  videoPlayer.addEventListener("timeupdate", function () {
+  player.on("timeupdate", function () {
     const drillData = exerciseData[currentGroupKey]?.[currentDrillKey];
     if (drillData?.type !== "chapters") return;
-    const currentTime = videoPlayer.currentTime;
+    const currentTime = player.currentTime;
     const activeChapter = drillData.items.find(
       (chap) => currentTime >= chap.startTime && currentTime < chap.endTime
     );
@@ -311,57 +321,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  fullscreenBtn.addEventListener("click", () => {
-    if (!document.fullscreenElement) {
-      videoWrapper
-        .requestFullscreen()
-        .catch((err) =>
-          console.error(
-            `Error attempting to enable full-screen mode: ${err.message} (${err.name})`
-          )
-        );
-    } else {
-      document.exitFullscreen();
-    }
-  });
-
-  document.addEventListener("fullscreenchange", () => {
-    if (document.fullscreenElement) {
-      // Feature detection for Screen Orientation API
-      if (window.screen && window.screen.orientation && typeof screen.orientation.lock === "function") {
-        screen.orientation
-          .lock("landscape")
-          .catch((err) =>
-            console.warn("Screen orientation lock failed:", err.message)
-          );
-      } else {
-        // Fallback: try legacy vendor methods or inform user
-        if (screen.lockOrientation) {
-          screen.lockOrientation("landscape");
-        } else if (screen.mozLockOrientation) {
-          screen.mozLockOrientation("landscape");
-        } else if (screen.msLockOrientation) {
-          screen.msLockOrientation("landscape");
-        } else {
-          console.info("Screen orientation lock not supported in this browser");
-        }
-      }
-    } else {
-      // Feature detection for unlock as well
-      if (window.screen && window.screen.orientation && typeof screen.orientation.unlock === "function") {
-        screen.orientation.unlock();
-      } else {
-        // Fallback: try legacy vendor methods
-        if (screen.unlockOrientation) {
-          screen.unlockOrientation();
-        } else if (screen.mozUnlockOrientation) {
-          screen.mozUnlockOrientation();
-        } else if (screen.msUnlockOrientation) {
-          screen.msUnlockOrientation();
-        }
-      }
-    }
-  });
 
   downloadBtn.addEventListener("click", handleDownloadAll);
 
