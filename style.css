@@ -346,3 +346,20 @@ h1 {
   object-fit: cover;
 }
 
+/* --- SETTINGS VIEW --- */
+#settings-list {
+  list-style: none;
+  padding: var(--space-1) var(--space-2) var(--space-4);
+}
+
+/* Style for the icons in the settings list */
+#settings-list .item-thumbnail svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--text-secondary);
+  transition: stroke 0.2s ease-in-out;
+}
+
+#settings-list .playlist-item:hover .item-thumbnail svg {
+  stroke: var(--accent-action-primary);
+}

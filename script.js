@@ -105,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const downloadProgress = document.getElementById("download-progress");
   const progressBar = document.getElementById("progress-bar");
   const progressText = document.getElementById("progress-text");
+  const settingsCardArea = document.getElementById("settings-card-area");
 
   let currentItemIndex = -1;
   let currentGroupKey = "";
@@ -189,6 +190,39 @@ document.addEventListener("DOMContentLoaded", function () {
     playlistElement.innerHTML = playlistHTML;
   }
 
+  function renderSettings() {
+    const settingsHTML = `
+      <ul id="settings-list">
+        <li>
+          <a class="playlist-item" id="cache-all-btn">
+            <div class="item-thumbnail">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 14V3"/></svg>
+            </div>
+            <div class="item-info">
+              <h3 class="item-title">Cache All Videos</h3>
+              <p class="item-duration">Download all videos for offline playback.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="playlist-item" id="check-update-btn">
+            <div class="item-thumbnail">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-9 9H3.5a2 2 0 0 1-2-2V5.5a2 2 0 0 1 2-2H12a9 9 0 0 1 9 9Z"/><path d="M12 7v5l3 3"/></svg>
+            </div>
+            <div class="item-info">
+              <h3 class="item-title">Check for Updates</h3>
+              <p class="item-duration">Check for new videos and app data.</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    `;
+    settingsCardArea.innerHTML = settingsHTML;
+
+    document.getElementById('cache-all-btn')?.addEventListener('click', handleDownloadAll);
+    document.getElementById('check-update-btn')?.addEventListener('click', handleCheckForUpdate);
+  }
+
   function updateActiveItemInPlaylist(activeIndex) {
     const allItems = playlistElement.querySelectorAll(".playlist-item");
     allItems.forEach((item, index) => {
@@ -259,6 +293,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function loadDrill(groupKey, drillKey) {
+    // Handle settings view
+    if (drillKey === "settings") {
+      playlistElement.hidden = true;
+      offlineControls.hidden = true;
+      settingsCardArea.hidden = false;
+      playlistTitle.textContent = "Settings";
+      renderSettings();
+      return;
+    }
+
+    // Handle playlist view
+    playlistElement.hidden = false;
+    if (isPWA()) {
+      checkOfflineStatus(); // Re-check status when switching back to a playlist
+    }
+    settingsCardArea.hidden = true;
+
     if (!exerciseData[groupKey] || !exerciseData[groupKey][drillKey]) return;
     currentGroupKey = groupKey;
     currentDrillKey = drillKey;
@@ -325,6 +376,19 @@ document.addEventListener("DOMContentLoaded", function () {
   downloadBtn.addEventListener("click", handleDownloadAll);
 
   // --- 6. OFFLINE & INITIALIZATION ---
+  function handleCheckForUpdate() {
+    // We'll show a simple alert, then re-initialize the app
+    alert("Checking for updates...");
+    init()
+      .then(() => {
+        alert("Update check complete. The app is now up-to-date.");
+      })
+      .catch((error) => {
+        alert("Failed to check for updates. Please try again later.");
+        console.error("Update check failed:", error);
+      });
+  }
+
   async function handleDownloadAll() {
     downloadBtn.disabled = true;
     downloadBtn.textContent = "Downloading...";
@@ -391,11 +455,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function init() {
     try {
+      // Clear previous categories to prevent duplication on re-init
+      categorySelector.innerHTML = "";
+
       const response = await fetch("data.json");
       if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);
       exerciseData = await response.json();
       allVideoUrls = getAllVideoUrls(exerciseData);
+
+      // Add settings category
+      const settingsOptgroup = document.createElement("optgroup");
+      settingsOptgroup.label = "Settings";
+      const settingsOption = document.createElement("option");
+      settingsOption.value = "settings"; // A unique value for settings
+      settingsOption.textContent = "General";
+      settingsOptgroup.appendChild(settingsOption);
+      categorySelector.appendChild(settingsOptgroup);
 
       const groupKeys = Object.keys(exerciseData);
       groupKeys.forEach((groupKey) => {
@@ -413,8 +489,26 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       if (categorySelector.options.length > 0) {
-        const firstOption = categorySelector.options[0];
-        loadDrill(firstOption.parentElement.label, firstOption.value);
+        let firstDrillOption = null;
+        for (const option of categorySelector.options) {
+          if (option.value !== "settings") {
+            firstDrillOption = option;
+            break;
+          }
+        }
+
+        if (firstDrillOption) {
+          categorySelector.value = firstDrillOption.value;
+          loadDrill(
+            firstDrillOption.parentElement.label,
+            firstDrillOption.value
+          );
+        } else if (categorySelector.options[0]?.value === "settings") {
+          // If only settings is available, load it
+          loadDrill("Settings", "settings");
+        } else {
+          playlistTitle.textContent = "Playlist Empty";
+        }
       } else {
         playlistTitle.textContent = "Playlist Empty";
       }
