@@ -115,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const offlineControls = document.getElementById("offline-controls");
   const offlineMessage = document.getElementById("offline-message");
   const downloadBtn = document.getElementById("download-videos-btn");
+  const installPwaBtn = document.getElementById("install-pwa-btn");
   const downloadProgress = document.getElementById("download-progress");
   const progressBar = document.getElementById("progress-bar");
   const progressText = document.getElementById("progress-text");
@@ -218,13 +219,13 @@ document.addEventListener("DOMContentLoaded", function () {
           </a>
         </li>
         <li>
-          <a class="playlist-item" id="install-pwa-btn">
+          <a class="playlist-item" id="storage-usage-btn">
             <div class="item-thumbnail">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"/></svg>
             </div>
             <div class="item-info">
-              <h3 class="item-title">Install PWA</h3>
-              <p class="item-duration">Download and install the app for offline access.</p>
+              <h3 class="item-title">Storage Usage</h3>
+              <p class="item-duration">View app storage and cached data.</p>
             </div>
           </a>
         </li>
@@ -244,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
     settingsCardArea.innerHTML = settingsHTML;
 
     document.getElementById('cache-all-btn')?.addEventListener('click', handleDownloadAll);
-    document.getElementById('install-pwa-btn')?.addEventListener('click', handleInstallPWA);
+    document.getElementById('storage-usage-btn')?.addEventListener('click', handleStorageUsage);
     document.getElementById('check-update-btn')?.addEventListener('click', handleCheckForUpdate);
   }
 
@@ -399,6 +400,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   downloadBtn.addEventListener("click", handleDownloadAll);
+  installPwaBtn?.addEventListener("click", handleStorageUsage);
 
   // --- 6. OFFLINE & INITIALIZATION ---
   function handleCheckForUpdate() {
@@ -435,6 +437,73 @@ document.addEventListener("DOMContentLoaded", function () {
             "1. On mobile: Look for the 'Add to Home Screen' option in your browser's menu\n" +
             "2. On desktop: Look for the install icon in the address bar or menu\n\n" +
             "This will allow you to use the app offline!");
+    }
+  }
+
+  async function handleStorageUsage() {
+    try {
+      // Calculate IndexedDB storage usage
+      let indexedDBSize = 0;
+      const cachedKeys = await dbManager.getAllVideoKeys();
+      
+      // Get size of each cached video
+      for (const key of cachedKeys) {
+        try {
+          const videoBlob = await dbManager.getVideo(key);
+          if (videoBlob) {
+            indexedDBSize += videoBlob.size;
+          }
+        } catch (error) {
+          console.error(`Error getting size for video ${key}:`, error);
+        }
+      }
+      
+      // Format bytes to human readable format
+      function formatBytes(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+      }
+      
+      // Calculate cache storage usage
+      let cacheStorageSize = 0;
+      if ('caches' in window) {
+        try {
+          const cacheNames = await caches.keys();
+          for (const cacheName of cacheNames) {
+            const cache = await caches.open(cacheName);
+            const requests = await cache.keys();
+            for (const request of requests) {
+              try {
+                const response = await cache.match(request);
+                if (response) {
+                  const clonedResponse = response.clone();
+                  const blob = await clonedResponse.blob();
+                  cacheStorageSize += blob.size;
+                }
+              } catch (error) {
+                console.error(`Error getting size for cache item:`, error);
+              }
+            }
+          }
+        } catch (error) {
+          console.error('Error calculating cache storage size:', error);
+        }
+      }
+      
+      // Display storage information
+      const totalSize = indexedDBSize + cacheStorageSize;
+      alert(
+        "Storage Usage:\n\n" +
+        `Cached Videos: ${formatBytes(indexedDBSize)} (${cachedKeys.length} files)\n` +
+        `App Cache: ${formatBytes(cacheStorageSize)}\n` +
+        `Total: ${formatBytes(totalSize)}`
+      );
+    } catch (error) {
+      console.error('Error calculating storage usage:', error);
+      alert("Unable to calculate storage usage. Please try again later.");
     }
   }
 
