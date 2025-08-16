@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // --- 2. DOM ELEMENT REFERENCES ---
+  const pageContainer = document.querySelector(".page-container");
   const videoPlayer = document.getElementById("main-video");
   const player = new Plyr(videoPlayer, {
     // Plyr options, if needed
@@ -319,11 +320,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // --- 5. EVENT LISTENERS ---
+  videoPlayer.addEventListener("play", () => {
+    pageContainer.classList.add("video-focused");
+  });
+
+  videoPlayer.addEventListener("pause", () => {
+    pageContainer.classList.remove("video-focused");
+  });
+
   playlistElement.addEventListener("click", function (event) {
     const clickedItem = event.target.closest(".playlist-item");
     if (clickedItem) {
       event.preventDefault();
       playItem(parseInt(clickedItem.dataset.index, 10));
+      pageContainer.classList.add("video-focused");
     }
   });
 
