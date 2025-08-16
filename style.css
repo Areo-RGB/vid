@@ -30,6 +30,66 @@
     0px 0px 1px 0px rgba(23, 43, 77, 0.25);
 }
 
+/* --- PWA INSTALLATION BANNER --- */
+.pwa-install-banner {
+  background-color: var(--accent-action-primary);
+  color: white;
+  padding: var(--space-2);
+  text-align: center;
+  position: relative;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+
+.banner-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.banner-text {
+  font-weight: 600;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.banner-actions {
+  display: flex;
+  gap: var(--space-1);
+  align-items: center;
+}
+
+.install-btn {
+  background-color: white;
+  color: var(--accent-action-primary);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: var(--space-1) var(--space-2);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.install-btn:hover {
+  background-color: var(--bg-subtle);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* --- GLOBAL RESETS & BASE STYLES --- */
 *,
 *::before,
@@ -346,6 +406,11 @@ h1 {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+/* Hidden class for any element */
+[hidden] {
+  display: none !important;
 }
 
 .splash-image {

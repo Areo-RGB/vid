@@ -7,8 +7,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   // Stash the event so it can be triggered later
   deferredPrompt = e;
-  // Update UI to notify the user they can install the PWA
-  console.log('PWA install prompt is available');
+  // Show the installation banner
+  showInstallBanner();
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -99,9 +99,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- 2. DOM ELEMENT REFERENCES ---
   const videoPlayer = document.getElementById("main-video");
   const player = new Plyr(videoPlayer, {
-    // Plyr options, if needed
-    // For example, to hide the default fullscreen button if you have a custom one
-    // controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay' /*'fullscreen'*/],
+    speed: {
+      selected: 1,
+      options: [0.25, 0.5, 1]
+    }
   });
   
   // Add event listener to hide splash screen on first video play
@@ -120,6 +121,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const progressBar = document.getElementById("progress-bar");
   const progressText = document.getElementById("progress-text");
   const settingsCardArea = document.getElementById("settings-card-area");
+  
+  // PWA Install Banner Elements
+  const pwaInstallBanner = document.getElementById("pwa-install-banner");
+  const pwaInstallBtn = document.getElementById("pwa-install-btn");
+  const pwaInstallClose = document.getElementById("pwa-install-close");
 
   let currentItemIndex = -1;
   let currentGroupKey = "";
@@ -289,6 +295,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const isSameVideo = player.source === finalVideoSrc;
+    
     if (!isSameVideo) {
       player.source = {
         type: 'video',
@@ -298,8 +305,21 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     }
 
+    // For chapters, we need to set the start time
     if (drillData.type === "chapters") {
-      player.currentTime = itemData.startTime;
+      // Wait for the video to be ready before setting currentTime
+      const setStartTime = () => {
+        player.currentTime = itemData.startTime;
+        player.off('loadeddata', setStartTime); // Remove the listener after setting
+      };
+      
+      // If the player is already loaded, set the time immediately
+      if (player.media && player.media.readyState >= 2) {
+        player.currentTime = itemData.startTime;
+      } else {
+        // Otherwise, wait for the video to be loaded
+        player.on('loadeddata', setStartTime);
+      }
     } else if (isSameVideo) {
       player.currentTime = 0;
     }
@@ -353,6 +373,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // PWA Install Banner Event Listeners
+  pwaInstallBtn?.addEventListener("click", handleInstallPWA);
+  pwaInstallClose?.addEventListener("click", () => {
+    pwaInstallBanner?.classList.add("hidden");
+  });
+
   player.on("loadedmetadata", function () {
     const drillData = exerciseData[currentGroupKey]?.[currentDrillKey];
     if (drillData?.type === "playlist" && currentItemIndex !== -1) {
@@ -400,7 +426,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   downloadBtn.addEventListener("click", handleDownloadAll);
-  installPwaBtn?.addEventListener("click", handleStorageUsage);
+  installPwaBtn?.addEventListener("click", handleInstallPWA);
 
   // --- 6. OFFLINE & INITIALIZATION ---
   function handleCheckForUpdate() {
@@ -430,6 +456,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         // Clear the saved prompt since it can't be used again
         deferredPrompt = null;
+        // Hide the banner after the prompt is shown
+        pwaInstallBanner?.classList.add("hidden");
       });
     } else {
       // Provide instructions for manual installation
@@ -437,6 +465,13 @@ document.addEventListener("DOMContentLoaded", function () {
             "1. On mobile: Look for the 'Add to Home Screen' option in your browser's menu\n" +
             "2. On desktop: Look for the install icon in the address bar or menu\n\n" +
             "This will allow you to use the app offline!");
+    }
+  }
+
+  function showInstallBanner() {
+    // Show the installation banner if it exists
+    if (pwaInstallBanner) {
+      pwaInstallBanner.hidden = false;
     }
   }
 
@@ -633,6 +668,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (isPWA()) {
         await checkOfflineStatus();
+      }
+      
+      // Show install banner for browsers that support PWA but don't fire beforeinstallprompt
+      // (e.g., Safari on iOS)
+      if (!deferredPrompt && !isPWA()) {
+        // Only show banner if we're not already in PWA mode and there's no deferred prompt
+        // This is a simplified check - in a real app, you might want more sophisticated detection
+        setTimeout(() => {
+          if (!isPWA() && pwaInstallBanner) {
+            pwaInstallBanner.hidden = false;
+          }
+        }, 3000); // Show after 3 seconds
       }
     } catch (error) {
       console.error("Could not load exercise data:", error);
