@@ -11,8 +11,8 @@
   --text-disabled: #a5adba;
 
   /* Accent Colors */
-  --accent-action-primary: #0052cc;
-  --accent-action-primary-hover: #0065ff;
+  --accent-action-primary: #5b8aba;
+  --accent-action-primary-hover: #6c9bc9;
   --accent-secondary-orange: #d97008;
 
   /* Layout & Spacing (8-point grid) */
@@ -150,7 +150,7 @@ h1 {
 #category-selector:focus {
   outline: none;
   border-color: var(--accent-action-primary);
-  box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.3);
+  box-shadow: 0 0 0 3px rgba(91, 138, 186, 0.3);
 }
 
 /* --- PLAYLIST CARD --- */
@@ -191,6 +191,14 @@ h1 {
   padding: var(--space-1) var(--space-2) var(--space-4);
 }
 
+#playlist-list li {
+  margin-bottom: var(--space-1);
+}
+
+#playlist-list li:last-child {
+  margin-bottom: 0;
+}
+
 .playlist-item {
   display: flex;
   align-items: center;
@@ -200,7 +208,7 @@ h1 {
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
-  border: 2px solid transparent;
+  border: 2px solid var(--border-color);
 }
 
 .playlist-item:not(.active):hover {
@@ -350,6 +358,14 @@ h1 {
 #settings-list {
   list-style: none;
   padding: var(--space-1) var(--space-2) var(--space-4);
+}
+
+#settings-list li {
+  margin-bottom: var(--space-2);
+}
+
+#settings-list li:last-child {
+  margin-bottom: 0;
 }
 
 /* Style for the icons in the settings list */

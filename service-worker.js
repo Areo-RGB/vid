@@ -6,8 +6,8 @@ const urlsToCache = [
   "script.js",
   "data.json",
   "manifest.json",
-  "icons/icon-192x192.png",
-  "icons/icon-512x512.png",
+  "icons/android/android-launchericon-192-192.png",
+  "icons/android/android-launchericon-512-512.png",
 ];
 
 // Install event: open a cache and add the app shell files to it
