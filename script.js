@@ -210,7 +210,19 @@ document.addEventListener("DOMContentLoaded", function () {
     playlistElement.innerHTML = playlistHTML;
   }
 
-  function renderSettings() {
+  async function renderSettings() {
+    // Check for persistent storage support and status
+    let persistentStorageSupported = 'storage' in navigator && 'persist' in navigator.storage;
+    let isPersistent = false;
+    if (persistentStorageSupported) {
+      try {
+        isPersistent = await navigator.storage.persisted();
+      } catch (e) {
+        console.warn("Error checking persistent storage status:", e);
+        persistentStorageSupported = false;
+      }
+    }
+
     const settingsHTML = `
       <ul id="settings-list">
         <li>
@@ -235,6 +247,18 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
           </a>
         </li>
+        ${persistentStorageSupported ? `
+        <li>
+          <a class="playlist-item" id="persistent-storage-btn">
+            <div class="item-thumbnail">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="item-info">
+              <h3 class="item-title">Persistent Storage</h3>
+              <p class="item-duration">${isPersistent ? 'Enabled' : 'Request persistent storage for better offline reliability.'}</p>
+            </div>
+          </a>
+        </li>` : ''}
         <li>
           <a class="playlist-item" id="check-update-btn">
             <div class="item-thumbnail">
@@ -253,6 +277,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('cache-all-btn')?.addEventListener('click', handleDownloadAll);
     document.getElementById('storage-usage-btn')?.addEventListener('click', handleStorageUsage);
     document.getElementById('check-update-btn')?.addEventListener('click', handleCheckForUpdate);
+    
+    // Add event listener for persistent storage button if it exists
+    const persistentStorageBtn = document.getElementById('persistent-storage-btn');
+    if (persistentStorageBtn) {
+      persistentStorageBtn.addEventListener('click', handleRequestPersistentStorage);
+    }
   }
 
   function updateActiveItemInPlaylist(activeIndex) {
@@ -440,6 +470,30 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Failed to check for updates. Please try again later.");
         console.error("Update check failed:", error);
       });
+  }
+
+  async function handleRequestPersistentStorage() {
+    try {
+      // Check if persistent storage is already granted
+      if (await navigator.storage.persisted()) {
+        alert("Persistent storage is already enabled for this app.");
+        return;
+      }
+      
+      // Request persistent storage
+      const persistent = await navigator.storage.persist();
+      
+      if (persistent) {
+        alert("Persistent storage enabled successfully! This will help keep your downloaded videos available offline even when storage space is low.");
+        // Re-render settings to update the status
+        renderSettings();
+      } else {
+        alert("Unable to enable persistent storage. Your browser may not support this feature or you may have declined the request.");
+      }
+    } catch (error) {
+      console.error("Error requesting persistent storage:", error);
+      alert("An error occurred while requesting persistent storage. Please try again later.");
+    }
   }
 
   function handleInstallPWA() {
