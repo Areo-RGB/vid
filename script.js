@@ -1,3 +1,16 @@
+// Variable to store the beforeinstallprompt event
+let deferredPrompt;
+
+// Listen for the beforeinstallprompt event
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault();
+  // Stash the event so it can be triggered later
+  deferredPrompt = e;
+  // Update UI to notify the user they can install the PWA
+  console.log('PWA install prompt is available');
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   // --- 0. SPLASH SCREEN MANAGEMENT ---
   const splashScreen = document.getElementById('splash-screen');
@@ -205,6 +218,17 @@ document.addEventListener("DOMContentLoaded", function () {
           </a>
         </li>
         <li>
+          <a class="playlist-item" id="install-pwa-btn">
+            <div class="item-thumbnail">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"/></svg>
+            </div>
+            <div class="item-info">
+              <h3 class="item-title">Install PWA</h3>
+              <p class="item-duration">Download and install the app for offline access.</p>
+            </div>
+          </a>
+        </li>
+        <li>
           <a class="playlist-item" id="check-update-btn">
             <div class="item-thumbnail">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-9 9H3.5a2 2 0 0 1-2-2V5.5a2 2 0 0 1 2-2H12a9 9 0 0 1 9 9Z"/><path d="M12 7v5l3 3"/></svg>
@@ -220,6 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
     settingsCardArea.innerHTML = settingsHTML;
 
     document.getElementById('cache-all-btn')?.addEventListener('click', handleDownloadAll);
+    document.getElementById('install-pwa-btn')?.addEventListener('click', handleInstallPWA);
     document.getElementById('check-update-btn')?.addEventListener('click', handleCheckForUpdate);
   }
 
@@ -387,6 +412,30 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Failed to check for updates. Please try again later.");
         console.error("Update check failed:", error);
       });
+  }
+
+  function handleInstallPWA() {
+    // Check if we have a stored beforeinstallprompt event
+    if (deferredPrompt) {
+      // Show the install prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        // Clear the saved prompt since it can't be used again
+        deferredPrompt = null;
+      });
+    } else {
+      // Provide instructions for manual installation
+      alert("To install this app on your device:\n\n" +
+            "1. On mobile: Look for the 'Add to Home Screen' option in your browser's menu\n" +
+            "2. On desktop: Look for the install icon in the address bar or menu\n\n" +
+            "This will allow you to use the app offline!");
+    }
   }
 
   async function handleDownloadAll() {
